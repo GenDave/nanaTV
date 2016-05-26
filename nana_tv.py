@@ -23,18 +23,20 @@ time.sleep(10)
 print("starting nanaRV")
 
 # Generate file list
-
+extensionList = [".avi"] # list of allowed media file extensions.
 mediaDir = '/home/pi/media/'
 fileList = []
 for root, dirnames, filenames in os.walk(mediaDir):
   for filename in filenames:
-    fileList.append(os.path.join(root, filename))
+    if any([filename.endswith(ext) for ext in extensionList]):
+      fileList.append(os.path.join(root, filename))
 
 andreDir = '/home/pi/media/andre/'
 andreList = []
 for root, dirnames, filenames in os.walk(andreDir):
   for filename in filenames:
-    andreList.append(os.path.join(root, filename))
+    if any([filename.endswith(ext) for ext in extensionList]):
+      andreList.append(os.path.join(root, filename))
 
 PrideFilm = '/home/pi/media/Pride_and_Prejudice.avi'
 BrideFilm = '/home/pi/media/Bride_and_Prejudice.avi'
